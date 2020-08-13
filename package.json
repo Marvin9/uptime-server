@@ -1,0 +1,52 @@
+{
+  "name": "uptime-server-client",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "tsc && parcel build index.html",
+    "lint": "clear && eslint src/**/*",
+    "lint:fix": "clear && eslint src/**/* --fix"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "baseui": "^9.94.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "styletron-engine-atomic": "^1.4.6",
+    "styletron-react": "^5.2.7"
+  },
+  "devDependencies": {
+    "@types/react-redux": "^7.1.9",
+    "@types/redux": "^3.6.0",
+    "@types/styletron-engine-atomic": "^1.1.0",
+    "@types/styletron-react": "^5.0.2",
+    "@types/styletron-standard": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "babel-preset-nano-react-app": "^0.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-standard": "^4.0.1",
+    "parcel": "^2.0.0-alpha.3.2",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "babel": {
+    "presets": [
+      "nano-react-app"
+    ]
+  }
+}
