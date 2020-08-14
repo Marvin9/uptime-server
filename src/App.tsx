@@ -1,8 +1,24 @@
 import React from 'react';
-import { UptimeLoader } from './utils';
+import { connect } from 'react-redux';
 
-export default () => (
+import rootReducer from './store/reducers';
+
+import { UptimeLoader, RedirectWrapper } from './utils';
+
+interface AppType {
+  loading: boolean;
+}
+
+const App: React.FC<AppType> = ({ loading }) => (
   <>
-    <UptimeLoader />
+    {console.log(loading)}
+    <RedirectWrapper />
+    {loading && <UptimeLoader />}
   </>
 );
+
+const mapStateToProps = (state: ReturnType<typeof rootReducer>) => ({
+  loading: state.AuthReducer.authLoading,
+});
+
+export default connect(mapStateToProps)(App);

@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "baseui": "^9.94.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
     "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
+    "@types/node": "^14.0.27",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/redux": "^3.6.0",

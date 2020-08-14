@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard',
+    'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
@@ -26,5 +27,7 @@ module.exports = {
   rules: {
     'react/display-name': 'off',
     'react/prop-types': 'off',
+    'no-async-promise-executor': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };

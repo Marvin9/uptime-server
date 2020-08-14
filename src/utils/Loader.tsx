@@ -5,7 +5,7 @@ interface LoaderProps {
   size?: number;
 }
 
-const Loader: React.FC<LoaderProps> = ({ size = 96 }) => (
+const Loader: React.FC<LoaderProps> = ({ size = 60 }) => (
   <Spinner
     size={size}
     overrides={{
