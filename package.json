@@ -5,8 +5,8 @@
   "scripts": {
     "start": "parcel index.html --open",
     "build": "tsc && parcel build index.html",
-    "lint": "clear && eslint src/**/*",
-    "lint:fix": "clear && eslint src/**/* --fix"
+    "lint": "clear && eslint src/**/*.{ts,tsx}",
+    "lint:fix": "clear && eslint src/**/*.{ts,tsx} --fix"
   },
   "license": "MIT",
   "dependencies": {

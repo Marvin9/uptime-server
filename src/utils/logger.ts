@@ -3,7 +3,8 @@ const log = process.env.NODE_ENV === 'development' ? console.log : () => false;
 const pre = `\n[${new Date()}]:\t`;
 const post = '\n\n';
 
-type func = () => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type func = (...args) => any;
 
 export const plainLog = (message: string): void => {
   log(`${pre}${message}${post}`);

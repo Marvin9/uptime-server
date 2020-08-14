@@ -5,15 +5,17 @@ import rootReducer from './store/reducers';
 
 import { UptimeLoader, RedirectWrapper } from './utils';
 
+import { Pages } from './routes/routes';
+
 interface AppType {
   loading: boolean;
 }
 
 const App: React.FC<AppType> = ({ loading }) => (
   <>
-    {console.log(loading)}
-    <RedirectWrapper />
     {loading && <UptimeLoader />}
+    {!loading && <Pages />}
+    <RedirectWrapper />
   </>
 );
 
