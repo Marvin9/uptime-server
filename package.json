@@ -21,6 +21,7 @@
     "styletron-react": "^5.2.7"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
     "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
