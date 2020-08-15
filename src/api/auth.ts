@@ -24,10 +24,16 @@ export const authUser = (
   plainLog(`${type} - ${useAPI}`);
   return new Promise(async (resolve) => {
     try {
-      const response = await axios.post(useAPI, {
-        email,
-        password,
-      } as AuthRequest);
+      const response = await axios.post(
+        useAPI,
+        {
+          email,
+          password,
+        } as AuthRequest,
+        {
+          withCredentials: true,
+        },
+      );
       const data = response.data as AuthResponse;
       if (response.status !== 200 || data.error) {
         plainLog(data.message);

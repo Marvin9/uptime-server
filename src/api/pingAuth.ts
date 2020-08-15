@@ -14,7 +14,7 @@ export const pingAuth = (): Promise<string | null> => {
   return new Promise(async (resolve) => {
     plainLog('pinging /auth/ping');
     try {
-      const response = await axios.get(`${APIBase}/auth/ping`);
+      const response = await axios.get(`${APIBase}/auth/ping`, { withCredentials: true });
 
       if (response.status === 200) {
         const data = response.data as pingAuthResponse;

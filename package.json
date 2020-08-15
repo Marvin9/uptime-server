@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "NODE_ENV=development parcel index.html -p 3000 --open",
     "build": "tsc && parcel build index.html",
     "lint": "clear && eslint src/**/*.{ts,tsx}",
     "lint:fix": "clear && eslint src/**/*.{ts,tsx} --fix"
@@ -22,6 +22,7 @@
     "styletron-react": "^5.2.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
     "@babel/preset-typescript": "^7.10.4",
     "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
     "@types/node": "^14.0.27",
@@ -46,7 +47,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.0.8",
     "eslint-plugin-standard": "^4.0.1",
-    "parcel": "^2.0.0-alpha.3.2",
+    "parcel": "^2.0.0-nightly.366",
     "prettier": "^2.0.5",
     "typescript": "^3.9.7"
   },
