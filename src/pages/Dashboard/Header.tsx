@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Transition } from 'react-transition-group';
 import { Button } from 'baseui/button';
 import { H6 } from 'baseui/typography';
 import { HeaderNavigation, ALIGN, StyledNavigationList } from 'baseui/header-navigation';
