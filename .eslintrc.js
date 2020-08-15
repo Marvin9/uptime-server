@@ -29,5 +29,6 @@ module.exports = {
     'react/prop-types': 'off',
     'no-async-promise-executor': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    camelcase: 'off',
   },
 };
