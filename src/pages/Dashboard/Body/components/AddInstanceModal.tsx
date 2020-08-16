@@ -133,7 +133,7 @@ const mapDispatchToProps = (dispatch: Dispatch<actionTypes.ADD_DASHBOARD_INSTANC
 });
 
 const mapStateToProps = (state: ReturnType<typeof rootReducer>) => ({
-  email: state.AuthReducer.userData?.email,
+  email: state.AuthReducer.userData ? state.AuthReducer.userData.email : undefined,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddInstanceModal);

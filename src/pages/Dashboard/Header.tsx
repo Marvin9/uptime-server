@@ -53,7 +53,7 @@ const Header: React.FC<HeaderType> = ({ email }) => (
 );
 
 const mapStateToProps = (state: ReturnType<typeof rootReducer>) => ({
-  email: state.AuthReducer.userData?.email,
+  email: state.AuthReducer.userData ? state.AuthReducer.userData.email : undefined,
 });
 
 export default connect(mapStateToProps)(Header);
