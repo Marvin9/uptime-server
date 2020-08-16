@@ -59,3 +59,61 @@ export const initDashboardAPI = (): Promise<{ instances: instance[]; reports: re
       });
   });
 };
+
+type AddInstanceRequest = {
+  url: string;
+  duration: number;
+};
+
+type AddInstanceResponse = {
+  error: boolean;
+  data: string;
+};
+
+export const addInstanceAPI = (
+  url: string,
+  durationInNanoseconds: number,
+): Promise<{
+  error: boolean;
+  status: number;
+  data: string | null;
+}> => {
+  return new Promise(async (resolve) => {
+    try {
+      const response = await axios.post(
+        APIList.ADD_INSTANCE,
+        {
+          url,
+          duration: durationInNanoseconds,
+        } as AddInstanceRequest,
+        { withCredentials: true },
+      );
+
+      if (response.status !== 200) {
+        logger.plainLog('Add instance error response: ');
+        console.log(response.data);
+        logger.plainLog('');
+        resolve({
+          error: true,
+          status: response.status,
+          data: response.data,
+        });
+        return;
+      }
+
+      const respData = response.data as AddInstanceResponse;
+      resolve({
+        error: false,
+        status: response.status,
+        data: respData.data,
+      });
+    } catch (e) {
+      logger.errorLog(addInstanceAPI, e);
+      resolve({
+        error: true,
+        status: 401,
+        data: null,
+      });
+    }
+  });
+};
