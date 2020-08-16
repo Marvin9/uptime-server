@@ -2,14 +2,12 @@ import * as action from './actionTypes';
 
 import * as dashboard from './dashboard/types';
 
-import { routes } from '../routes';
-
 export const setAuthLoading = (t: boolean): action.SET_AUTH_LOADING => ({
   type: action.actionTypes.SET_AUTH_LOADING,
   payload: t,
 });
 
-export const redirectTo_ = (redirectTo: routes): action.REDIRECT_TO => ({
+export const redirectTo_ = (redirectTo: string): action.REDIRECT_TO => ({
   type: action.actionTypes.REDIRECT_TO,
   payload: redirectTo,
 });
