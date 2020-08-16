@@ -5,4 +5,4 @@ export enum AuthType {
 
 export { pingAuth } from './pingAuth';
 export { authUser } from './auth';
-export { initDashboardAPI, addInstanceAPI } from './dashboard';
+export { initDashboardAPI, addInstanceAPI, removeInstanceAPI } from './dashboard';

@@ -5,7 +5,7 @@ import { FlexGrid, FlexGridItem } from 'baseui/flex-grid';
 import rootReducer from '../../../../../store/reducers';
 import { instance } from '../../../../../store/dashboard/types';
 
-import { Instances } from './components/Instances';
+import Instances from './components/Instances';
 import Reports from './components/Reports';
 
 interface VisualizationType {

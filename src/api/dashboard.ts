@@ -117,3 +117,32 @@ export const addInstanceAPI = (
     }
   });
 };
+
+type RemoveInstanceRequest = {
+  instance_id: string;
+};
+
+export const removeInstanceAPI = (instanceId: string): Promise<boolean> => {
+  return new Promise(async (resolve) => {
+    try {
+      const response = await axios.delete(APIList.ADD_INSTANCE, {
+        data: {
+          instance_id: instanceId,
+        } as RemoveInstanceRequest,
+        withCredentials: true,
+      });
+
+      if (response.status === 200) {
+        logger.successLog(removeInstanceAPI);
+        resolve(true);
+      } else {
+        logger.plainLog(`Response: ${response.status}`);
+        console.log(response.data);
+        logger.plainLog('');
+        resolve(false);
+      }
+    } catch (e) {
+      resolve(false);
+    }
+  });
+};
