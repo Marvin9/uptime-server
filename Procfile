@@ -1,1 +1,1 @@
-web: dist/index.html
+web: ./dist/index.html
