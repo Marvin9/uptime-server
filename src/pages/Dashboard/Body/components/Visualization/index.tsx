@@ -17,7 +17,11 @@ const Visualization: React.FC<VisualizationType> = ({ instances }) => {
 
   return (
     <>
-      <FlexGrid flexGridColumnCount={2} flexGridColumnGap="scale1000" marginTop="scale800">
+      <FlexGrid
+        flexGridColumnCount={[1, 1, 2, 2]}
+        flexGridColumnGap="scale1000"
+        marginTop="scale800"
+      >
         <FlexGridItem>
           <Instances
             selectedInstance={selectedInstance}

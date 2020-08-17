@@ -64,7 +64,7 @@ const Header: React.FC<HeaderType> = ({ email, logoutRedirect }) => {
                 height: '50px',
                 marginTop: 'auto',
                 marginBottom: 'auto',
-                marginLeft: '50px',
+                marginLeft: '30px',
               },
             },
           }}

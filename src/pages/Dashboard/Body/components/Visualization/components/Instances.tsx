@@ -1,6 +1,5 @@
 /* eslint-disable no-extra-boolean-cast */
 import React, { useState, Dispatch } from 'react';
-import { useStyletron } from 'baseui';
 import { Button, KIND, SIZE, SHAPE } from 'baseui/button';
 import DeleteIcon from 'baseui/icon/delete-alt';
 import EyeIcon from 'baseui/icon/show';
@@ -29,7 +28,6 @@ const Instances: React.FC<InstancesType> = ({
   selectInstance,
   removeInstance,
 }) => {
-  const [, theme] = useStyletron();
   const [removeInstanceLoading, updateRemoveInstanceLoading] = useState({
     isLoading: false,
     instanceId: '',
@@ -47,7 +45,7 @@ const Instances: React.FC<InstancesType> = ({
   };
 
   return (
-    <ul>
+    <ul style={{ padding: 0, maxWidth: '100%' }}>
       {!!instances.length ? (
         instances.map((instance) => (
           <ListItem
@@ -56,9 +54,10 @@ const Instances: React.FC<InstancesType> = ({
               Content: {
                 style: {
                   background: selectedInstance === instance.unique_id ? '#F6F6F6' : '',
-                  padding: `0 ${theme.sizing.scale1000}`,
+                  padding: `0`,
                   transition: '0.5s',
                   position: 'relative',
+                  marginLeft: 0,
                 },
               },
             }}
@@ -73,7 +72,7 @@ const Instances: React.FC<InstancesType> = ({
                 >
                   Delete
                 </Button>
-                <div style={{ width: '18px' }} />
+                <div style={{ width: '10px' }} />
                 <Button
                   kind={KIND.secondary}
                   size={SIZE.mini}
@@ -90,7 +89,7 @@ const Instances: React.FC<InstancesType> = ({
               removeInstanceLoading.instanceId === instance.unique_id ? (
                 <UptimeLoader size={30} />
               ) : (
-                instance.url
+                <> {instance.url}</>
               )}
             </ListItemLabel>
           </ListItem>
