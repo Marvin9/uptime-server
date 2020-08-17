@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "start": "harp server dist -p $PORT",
-    "start-dev": "NODE_ENV=development parcel index.html -p 3000 --open",
+    "start": "NODE_ENV=development parcel index.html -p 3000 --open",
     "build": "tsc && parcel build index.html",
     "lint": "clear && eslint src/**/*.{ts,tsx}",
     "lint:fix": "clear && eslint src/**/*.{ts,tsx} --fix"

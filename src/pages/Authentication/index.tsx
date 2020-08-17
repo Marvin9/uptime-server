@@ -19,8 +19,8 @@ interface AuthenticationPageType {
 }
 
 const AuthenticationPage: React.FC<AuthenticationPageType> = ({ authUser }) => {
-  const [email, updateEmail] = useState('mayursiinh@gmail.com');
-  const [password, updatePassword] = useState('abcd');
+  const [email, updateEmail] = useState('');
+  const [password, updatePassword] = useState('');
 
   const [warning, updateWarning] = useState<validator.authBodyWarning>({
     email: null,
