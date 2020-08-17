@@ -1,4 +1,4 @@
-export const APIBase = 'https://uptime-server-service.herokuapp.com';
+export const APIBase = '';
 
 export const APIList = {
   LOGIN: `${APIBase}/auth/login`,
