@@ -74,6 +74,7 @@ const AddInstanceModal: React.FC<AddInstanceModalType> = ({
       return;
     }
 
+    updateCreateInstanceLoading(false);
     addInstance(url, durationInNanoseconds, addInstanceInAPI.data);
     updateUrl('');
     updateDurationInHour([MIN_HOUR]);
