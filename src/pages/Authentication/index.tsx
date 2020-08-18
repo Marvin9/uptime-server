@@ -1,11 +1,12 @@
 import React, { useState, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { H4 } from 'baseui/typography';
+import { H4, Label4 } from 'baseui/typography';
 import { Card, StyledBody } from 'baseui/card';
 import { FormControl } from 'baseui/form-control';
 import { Input } from 'baseui/input';
 import { Button, KIND } from 'baseui/button';
 
+import rootReducer from '../../store/reducers';
 import * as at from '../../store/actionTypes';
 import * as actions from '../../store/actions';
 import * as validator from '../../utils/validator';
@@ -15,10 +16,11 @@ import { AuthType } from '../../api';
 type oringActions = at.LOGIN_USER | at.REGISTER_USER;
 
 interface AuthenticationPageType {
+  authError: string;
   authUser: (email: string, password: string, type: AuthType) => void;
 }
 
-const AuthenticationPage: React.FC<AuthenticationPageType> = ({ authUser }) => {
+const AuthenticationPage: React.FC<AuthenticationPageType> = ({ authUser, authError }) => {
   const [email, updateEmail] = useState('');
   const [password, updatePassword] = useState('');
 
@@ -77,6 +79,7 @@ const AuthenticationPage: React.FC<AuthenticationPageType> = ({ authUser }) => {
               type="password"
             />
           </FormControl>
+          {authError && <Label4>{authError}</Label4>}
           <Button
             overrides={{
               BaseButton: {
@@ -110,6 +113,10 @@ const AuthenticationPage: React.FC<AuthenticationPageType> = ({ authUser }) => {
   );
 };
 
+const mapStateToProps = (state: ReturnType<typeof rootReducer>) => ({
+  authError: state.AuthReducer.authError,
+});
+
 const mapDispatchToProps = (dispatch: Dispatch<oringActions>) => ({
   authUser: (email: string, password: string, type: AuthType) => {
     if (type === AuthType.LOGIN) {
@@ -119,4 +126,4 @@ const mapDispatchToProps = (dispatch: Dispatch<oringActions>) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(AuthenticationPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthenticationPage);

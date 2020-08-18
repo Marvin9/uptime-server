@@ -37,6 +37,10 @@ export const authUser = (
       const data = response.data as AuthResponse;
       if (response.status !== 200 || data.error) {
         plainLog(data.message);
+        if (response.status === 409) {
+          resolve('Email already exists.');
+          return;
+        }
         resolve(data.message);
       } else {
         successLog(authUser);
@@ -44,7 +48,11 @@ export const authUser = (
       }
     } catch (e) {
       errorLog(authUser, e);
-      resolve(e.message);
+      if (type === AuthType.LOGIN) {
+        resolve('Invalid credentials.');
+        return;
+      }
+      resolve('User already exists.');
     }
   });
 };
