@@ -54,7 +54,7 @@ const Instances: React.FC<InstancesType> = ({
               Content: {
                 style: {
                   background: selectedInstance === instance.unique_id ? '#F6F6F6' : '',
-                  padding: `0`,
+                  padding: `0 20px`,
                   transition: '0.5s',
                   position: 'relative',
                   marginLeft: 0,
