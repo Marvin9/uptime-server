@@ -19,6 +19,21 @@ type ReportsResonse = {
   data: _report[];
 };
 
+const normalizeReports = (reports: _report[]): reports => {
+  const normalizedReports: reports = {};
+  reports.forEach((report) => {
+    const _report = { ...report };
+    delete _report.instance_id;
+
+    if (normalizedReports[report.instance_id]) {
+      normalizedReports[report.instance_id].push(_report);
+    } else {
+      normalizedReports[report.instance_id] = [_report];
+    }
+  });
+  return normalizedReports;
+};
+
 export const initDashboardAPI = (): Promise<{ instances: instance[]; reports: reports } | null> => {
   return new Promise((resolve) => {
     const getInstances = axios.get(APIList.GET_INSTANCES, { withCredentials: true });
@@ -37,16 +52,7 @@ export const initDashboardAPI = (): Promise<{ instances: instance[]; reports: re
         const instanceResponseData = instanceResponse.data as InstanceResponse;
         const reportsResponseData = reportsResponse.data as ReportsResonse;
 
-        const normalizedReports: reports = {};
-        reportsResponseData.data.forEach((report) => {
-          const _report = { ...report };
-          delete _report.instance_id;
-          if (normalizedReports[report.instance_id]) {
-            normalizedReports[report.instance_id].push(_report);
-          } else {
-            normalizedReports[report.instance_id] = [_report];
-          }
-        });
+        const normalizedReports = normalizeReports(reportsResponseData.data);
 
         resolve({
           instances: instanceResponseData.data,
@@ -143,6 +149,20 @@ export const removeInstanceAPI = (instanceId: string): Promise<boolean> => {
       }
     } catch (e) {
       resolve(false);
+    }
+  });
+};
+
+export const getReportsAPI = (): Promise<reports | null> => {
+  return new Promise(async (resolve) => {
+    try {
+      const response = await axios.get(APIList.GET_REPORT, { withCredentials: true });
+
+      const responseData = response.data as ReportsResonse;
+
+      resolve(normalizeReports(responseData.data));
+    } catch (e) {
+      resolve(null);
     }
   });
 };
