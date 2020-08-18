@@ -18,3 +18,13 @@ export const formatDate = (dd: string): string => {
 
   return `${date} - ${hours}:${minute}`;
 };
+
+export const isValidURL = (url: string): boolean => {
+  try {
+    // eslint-disable-next-line no-new
+    new URL(url);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};

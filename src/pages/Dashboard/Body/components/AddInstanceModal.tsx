@@ -12,7 +12,7 @@ import * as actions from '../../../../store/actions';
 import * as actionTypes from '../../../../store/actionTypes';
 import rootReducer from '../../../../store/reducers';
 
-import { hoursToNanoseconds } from '../../../../utils';
+import { hoursToNanoseconds, isValidURL } from '../../../../utils';
 import { addInstanceAPI } from '../../../../api';
 
 interface AddInstanceModalType {
@@ -27,6 +27,8 @@ const MAX_HOUR = 24;
 const STEP = 0.5;
 
 const plural = (num: number): string => (num > 1 ? 's' : '');
+
+const provideValidURL = 'Provide valid url.';
 
 const AddInstanceModal: React.FC<AddInstanceModalType> = ({
   addInstance,
@@ -47,7 +49,15 @@ const AddInstanceModal: React.FC<AddInstanceModalType> = ({
     updateCreateInstanceLoading(true);
     // validate url
     if (!url) {
-      updateWarning('Provide valid url.');
+      updateWarning(provideValidURL);
+      updateCreateInstanceLoading(false);
+      return;
+    }
+
+    const isValid = isValidURL(url);
+
+    if (!isValid) {
+      updateWarning(provideValidURL);
       updateCreateInstanceLoading(false);
       return;
     }
@@ -106,7 +116,13 @@ const AddInstanceModal: React.FC<AddInstanceModalType> = ({
         </FormControl>
         {!!warning && <Paragraph4>{warning}</Paragraph4>}
         <Label4>
-          You will be notified at <u>{email}</u>
+          {!!url && (
+            <>
+              {url} will be monitored every {durationInHour[0]} Hour
+              {plural(durationInHour[0])}, if there is any change then{' '}
+            </>
+          )}
+          you will be notified at <u>{email}</u>
         </Label4>
       </ModalBody>
       <ModalFooter>
